@@ -28,6 +28,8 @@ const App = () => {
       imageUrl: "https://i.ibb.co/R70vBrQ/men.png",
     },
   ];
+
+  // Need to work on Navigation
   return <Directory categories={categories} />;
 };
 
