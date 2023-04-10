@@ -8,6 +8,8 @@ function Shop() {
   return <h1>I am the shop page</h1>;
 }
 
+// Need to work on this thing.
+
 function App() {
   return (
     <Routes>
