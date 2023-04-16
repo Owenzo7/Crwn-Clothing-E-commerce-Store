@@ -1,10 +1,10 @@
 import React from "react";
-import './form-input.styles.scss'
+import "./form-input.styles.scss";
 
 const Forminput = ({ label, ...otherProps }) => {
   return (
     <div className="group">
-    <input className="form-input" {...otherProps} />
+      <input className="form-input" {...otherProps} />
       {label && (
         <label
           className={`${
