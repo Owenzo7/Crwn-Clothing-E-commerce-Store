@@ -29,63 +29,62 @@ function SignInForm() {
     setformFields(defaultFormFields);
   };
 
-  const SignInWithGoogle = async () => {
-    const { user } = await signInWithGooglePopup();
-    await createUserDocumentFromAuth(user);
+  const handleSubmit = async (event) => {
+    event.preventDefault();
 
-    const handleSubmit = async (event) => {
-      event.preventDefault();
-
-      try {
-        const response = await SignInAuthUserWithEmailAndPassword(
-          email,
-          password
-        );
-        console.log(response);
-        resetFormFields();
-      } catch (error) {}
-    };
-
-    const handleChange = (event) => {
-      const { name, value } = event.target;
-
-      setformFields({ ...formFields, [name]: value });
-    };
-
-    return (
-      <div className="sign-up-container">
-        <h2>Already have an account?</h2>
-        <span>Sign in with your email and password</span>
-        <form onSubmit={handleSubmit}>
-          <Forminput
-            label="Email"
-            type="email"
-            required
-            onChange={handleChange}
-            name="email"
-            value={email}
-          />
-
-          <Forminput
-            label="Password"
-            type="password"
-            required
-            onChange={handleChange}
-            name="password"
-            value={password}
-          />
-
-          <div className="buttons-container">
-            <Button type="submit">Sign In</Button>
-            <Button buttonType="google" onclick={SignInWithGoogle}>
-              {" "}
-              Google sign In
-            </Button>
-          </div>
-        </form>
-      </div>
-    );
+    try {
+      const response = await SignInAuthUserWithEmailAndPassword(
+        email,
+        password
+      );
+      console.log(response);
+      resetFormFields();
+    } catch (error) {}
   };
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+
+    setformFields({ ...formFields, [name]: value });
+  };
+
+  return (
+    <div className="sign-up-container">
+      <h2>Already have an account?</h2>
+      <span>Sign in with your email and password</span>
+      <form onSubmit={handleSubmit}>
+        <Forminput
+          label="Email"
+          type="email"
+          required
+          onChange={handleChange}
+          name="email"
+          value={email}
+        />
+
+        <Forminput
+          label="Password"
+          type="password"
+          required
+          onChange={handleChange}
+          name="password"
+          value={password}
+        />
+
+        <div className="buttons-container">
+          <Button type="submit">Sign In</Button>
+          <Button buttonType="google" onClick={SignInWithGoogle}>
+            Google sign In
+          </Button>
+        </div>
+      </form>
+    </div>
+  );
 }
+
+const SignInWithGoogle = async () => {
+  const { user } = await signInWithGooglePopup();
+  await createUserDocumentFromAuth(user);
+};
 
 export default SignInForm;
