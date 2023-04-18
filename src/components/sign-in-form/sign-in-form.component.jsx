@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import { React, useState, useContext } from "react";
 import {
   signInWithGooglePopup,
   createUserDocumentFromAuth,
@@ -11,6 +11,8 @@ import "./sign-in-form.styles.scss";
 
 import Button from "../button/button.component";
 
+import { UserContext } from "../../context/user.context";
+
 const defaultFormFields = {
   email: "",
   password: "",
@@ -21,7 +23,7 @@ function SignInForm() {
 
   const { email, password } = formFields;
 
-  console.log(formFields);
+ const {setCurrentUser} = useContext(UserContext)
 
   // RESET FORM FIELDS AFTER SIGNING UP
 
@@ -33,24 +35,24 @@ function SignInForm() {
     event.preventDefault();
 
     try {
-      const response = await SignInAuthUserWithEmailAndPassword(
+      const {user} = await SignInAuthUserWithEmailAndPassword(
         email,
         password
       );
-      console.log(response);
+      
+      setCurrentUser(user)
       resetFormFields();
     } catch (error) {
-      switch(error.code){
+      switch (error.code) {
         case "auth/wrong-password":
-          alert("incorrect password for email")
-          break
+          alert("incorrect password for email");
+          break;
         case "auth/user-not-founc":
           alert("No user associated with this email");
-          break
+          break;
         default:
-          console.log(error)
+          console.log(error);
       }
-   
     }
   };
 
