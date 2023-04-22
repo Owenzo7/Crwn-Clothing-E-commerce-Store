@@ -33,7 +33,7 @@ function SignInForm() {
     event.preventDefault();
 
     try {
-      const { user } = await SignInAuthUserWithEmailAndPassword(
+       await SignInAuthUserWithEmailAndPassword(
         email,
         password
       );
