@@ -1,5 +1,3 @@
-
-
 import React from "react";
 import { Fragment, useContext } from "react";
 import { Outlet, Link } from "react-router-dom";
@@ -13,7 +11,6 @@ import { signOutUser } from "../../utils/firebase/firebase.utils";
 function Navigation() {
   const { currentUser } = useContext(UserContext);
 
-  
   return (
     <Fragment>
       <div className="navigation">
@@ -25,7 +22,9 @@ function Navigation() {
             SHOP
           </Link>
           {currentUser ? (
-            <span className="nav-link" onClick={signOutUser}>SIGN OUT</span>
+            <span className="nav-link" onClick={signOutUser}>
+              SIGN OUT
+            </span>
           ) : (
             <Link className="nav-link" to="/auth">
               SIGN IN
@@ -33,11 +32,10 @@ function Navigation() {
           )}
 
           <CartIcon />
-        
         </div>
         <CartDropdown />
       </div>
-      <Outlet /> 
+      <Outlet />
     </Fragment>
   );
 }
