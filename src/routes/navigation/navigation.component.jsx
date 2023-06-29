@@ -1,7 +1,10 @@
+
+
 import React from "react";
 import { Fragment, useContext } from "react";
 import { Outlet, Link } from "react-router-dom";
 import { ReactComponent as CrwnLogo } from "../../assets/crown.svg";
+import cartIcon from "../../components/cart-icon/cart-icon.component";
 import { UserContext } from "../../context/user.context";
 import "./navigation.styles.scss";
 import { signOutUser } from "../../utils/firebase/firebase.utils";
@@ -27,6 +30,9 @@ function Navigation() {
               SIGN IN
             </Link>
           )}
+
+          <cartIcon />
+        
         </div>
       </div>
       <Outlet /> 
