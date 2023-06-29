@@ -12,6 +12,8 @@ const addCartItem = (cartItems, productToAdd) => {
         : cartItem
     );
   }
+
+  return [...cartItems, { ...productToAdd, quantity: 1 }];
 };
 
 export const CartContext = createContext({
