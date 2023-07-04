@@ -4,7 +4,7 @@ import { CartContext } from "../../context/cart.context";
 import CheckoutItem from "../../components/checkout-item/checkout-item.component";
 
 function Checkout() {
-  const { cartItems, addItemToCart, removeItemToCart } =
+  const { cartItems} =
     useContext(CartContext);
   return (
     <div className="checkout-container">
