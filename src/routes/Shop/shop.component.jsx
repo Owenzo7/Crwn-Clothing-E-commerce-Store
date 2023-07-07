@@ -1,21 +1,17 @@
 /* eslint-disable no-unused-vars */
-import { useContext } from "react";
-import { CategoriesContext } from "../../context/categories.context";
-import CategoryPreview from "../../components/category-preview/category-preview.component";
+import { Route, Routes } from "react-router-dom";
+import CategoriesPreview from "../categories-preview/categories-preview.component";
+
 import "./shop.styles.scss";
 
 function Shop() {
-  const { categoriesMap } = useContext(CategoriesContext);
+  
   return (
-    <div className="shop-container">
-      {Object.keys(categoriesMap).map((title) => {
-        const products = categoriesMap[title];
+    <Routes>
 
-        return (
-          <CategoryPreview key={title} title={title} products={products} />
-        );
-      })}
-    </div>
+    <Route index element={<CategoriesPreview />} />
+    
+    </Routes>
   );
 }
 
