@@ -9,9 +9,7 @@ import Forminput from "../form-input/form-input.component";
 
 import "./sign-in-form.styles.scss";
 
-import Button from "../button/button.component";
-
-
+import Button, { BUTTON_TYPES_CLASSES } from "../button/button.component";
 
 const defaultFormFields = {
   email: "",
@@ -33,10 +31,7 @@ function SignInForm() {
     event.preventDefault();
 
     try {
-       await SignInAuthUserWithEmailAndPassword(
-        email,
-        password
-      );
+      await SignInAuthUserWithEmailAndPassword(email, password);
 
       resetFormFields();
     } catch (error) {
@@ -84,7 +79,11 @@ function SignInForm() {
 
         <div className="buttons-container">
           <Button type="submit">Sign In</Button>
-          <Button type="button" buttonType="google" onClick={SignInWithGoogle}>
+          <Button
+            type="button"
+            buttonType={BUTTON_TYPES_CLASSES.google}
+            onClick={SignInWithGoogle}
+          >
             Google sign In
           </Button>
         </div>
@@ -94,8 +93,7 @@ function SignInForm() {
 }
 
 const SignInWithGoogle = async () => {
-   await signInWithGooglePopup();
- 
+  await signInWithGooglePopup();
 };
 
 export default SignInForm;
