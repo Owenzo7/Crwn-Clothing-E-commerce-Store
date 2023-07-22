@@ -13,7 +13,7 @@ root.render(
   <React.StrictMode>
     <BrowserRouter>
       <UserProvider>
-        <CategoriesProvider>
+       <CategoriesProvider> 
           <CartProvider>
             <App />
           </CartProvider>
